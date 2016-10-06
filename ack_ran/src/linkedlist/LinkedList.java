@@ -73,6 +73,9 @@ public class LinkedList
 		length++;
 	}
 	
+	
+	
+	
 	public String toString()
 	{
 		 StringBuilder result=new StringBuilder();
