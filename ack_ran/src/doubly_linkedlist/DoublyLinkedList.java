@@ -124,14 +124,62 @@ public class DoublyLinkedList
 		
 	}
 	
-	public void remove(int position)
+	public int remove(int position)
 	{
+		if(position<0)
+			position=0;
+		if(position>=length)
+			position=length-1;
 		
+		if(head.getNext()==tail)
+		{
+			length--;
+			return Integer.MIN_VALUE;
+		}
+		else if(position==0)
+		{
+			   DLLNode save=head.getNext();
+			    head.setNext(save.getNext());
+			    save.getNext().setPrev(head);
+				length--;
+			    return save.getData();
+		}
+		else
+		{
+			DLLNode temp=head.getNext();
+			for(int i=1;i<position;i++)
+				temp=temp.getNext();
+			
+			temp.getPrev().setNext(temp.getNext());
+			temp.getNext().setPrev(temp.getPrev());
+			length--;
+			return temp.getData();
+		}
+	
 	}
 	
-	public void removeMatched(int data)
+	public int removeMatched(int data)
 	{
 		
+		if(head.getNext()==tail)
+			return Integer.MIN_VALUE;
+		
+		DLLNode temp=head.getNext();
+		int counter=0;
+		while(temp!=null)
+		{
+			if(temp.getData()==data)
+			{
+				temp.getPrev().setNext(temp.getNext());
+				temp.getNext().setPrev(temp.getPrev());
+				length--;
+				counter++;
+			}
+			
+			temp=temp.getNext();
+		}
+		
+		return counter;
 	}
 	
 	public String toString()

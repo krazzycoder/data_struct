@@ -21,6 +21,20 @@ public class DllTest
 		mydll.insert(420,3);
 		print(mydll);
 		
+		//remove operation
+		mydll.removeMatched(1);
+		print(mydll);
+		mydll.removeHead();
+		print(mydll);
+		mydll.removeTail();
+		print(mydll);
+		mydll.remove(1);
+		print(mydll);
+		mydll.clear();
+		print(mydll);
+		
+		
+		
 	}
 	
 	static void print(DoublyLinkedList dll)
